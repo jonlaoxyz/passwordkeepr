@@ -10,8 +10,8 @@ const createPasswordElement = function(passwordObj) {
       <td><a href="">${passwordObj.url}</a></td>
       <td>${passwordObj.category}</td>
       <td>
-        <span class="edit">Edit</span> /
-        <span class="delete">Delete</span>
+        <i class="far fa-edit" style="color: #989ea9;"></i> /
+        <i class="fa-solid fa-trash" style="color: #989ea9;"></i>
       </td>
     </tr>
   `);
