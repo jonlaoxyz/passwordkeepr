@@ -7,7 +7,7 @@ const createPasswordElement = function(passwordObj) {
       <td>${passwordObj.website_name}</td>
       <td>${passwordObj.username}</td>
       <td>${passwordObj.password}</td>
-      <td>${passwordObj.url}</td>
+      <td><a href="">${passwordObj.url}</a></td>
       <td>${passwordObj.category}</td>
       <td>
         <span class="edit">Edit</span> /
