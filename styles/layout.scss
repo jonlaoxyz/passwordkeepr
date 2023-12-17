@@ -4,3 +4,23 @@ body,
 html {
   margin: 0;
 }
+
+header.navbar  {
+  min-width: 900px;
+  padding: 1em;
+  background-color: white;
+}
+main {
+  min-width: 900px;
+  padding: 1em;
+  background-color: white;
+}
+footer {
+  min-width: 900px;
+  padding: 1em;
+  background-color: white;
+}
+.bg-light {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+}

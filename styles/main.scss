@@ -1,18 +1,28 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
 body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: top;
   align-items: center;
   min-height: 100vh;
+  background-image: url("/images/scott-webb-hDyO6rr3kqk-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 2em;
+}
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+.bi {
+  color: rgb(108, 108, 108);
+}
+
+.bi:hover {
+  color: rgb(0, 72, 255);
+  cursor: pointer;
+}
+
+td > i {
+  float: right;
+  padding: 0 0.7em;
 }
