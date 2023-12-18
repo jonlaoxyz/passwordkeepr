@@ -15,6 +15,9 @@ main {
   padding: 1em;
   background-color: white;
 }
+.container {
+  background-color: white;
+}
 footer {
   min-width: 900px;
   padding: 1em;
@@ -24,3 +27,5 @@ footer {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 }
+
+
