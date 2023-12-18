@@ -22,79 +22,91 @@
 
 <body>
 
-    <header class="navbar rounded-top bg-light" style="--bs-bg-opacity: .5;">
+    <header class="navbar rounded-top bg-light" style="--bs-bg-opacity: .5; --bs-light-rgb: 218,218,202;">
       <div class="navbar-brand">
-        <h1>PasswordKeepR</h1>
+        <div><img class="logo" src="./images/passwordkeepr_logo.png" alt="PasswordKeepR"></div>
         <small class="text-muted">Your Organization's Password Manager</small>
       </div>
-      <navigation>Menus</navigation>
+      <navigation class="navi">
+        <div><img class="org-logo" src="./images/org-logo_01.png" alt="Company Logo 01"></div>
+        <div>Welcome, John Doe! ${user_name}</div>
+        <div class="menu"><a href="" >List All</a> | <a href="">Logout ></a></div>
+        <button type="button" class="btn btn-success mt-2"><i class="bi bi-plus"></i> New Password</button>
+      </navigation>
     </header> <!-- Will contain logo, etc -->
-    <main class="bg-light" style="--bs-bg-opacity: .5;">
+    <main class="bg-light" style="--bs-bg-opacity: .5; --bs-light-rgb: 218,218,202;">
       <!-- container for holding the tweets from the database -->
       <div id="container">
 
-        <article class="password-item">
-          <div class="website-name">
-            <span class="col">Website:</span>
-            <span class="col">Facebook ${webName}</span>
+        <section class="password-item rounded shadow">
+          <div class="website-name row">
+            <h2>Facebook ${webName}</h2>
           </div>
-          <div class="user-id">
-            <span class="col">User Name:</span>
-            <span class="col">${userId}</span>
-            <span class="col"><i class="bi bi-copy"></i></span>
+          <div class="user-id row">
+            <span class="col-2 p-1 text-end">User Name:</span>
+            <span class="col p-1">${userId}</span>
+            <span class="col p-1"><a href=""><i class="bi bi-copy"></i></a></span>
           </div>
-          <div class="password">
-            <span>Password:</span>
-            <span>${password}</span>
-            <span><i class="bi bi-copy"></i></span>
+          <div class="password row">
+            <span class="col-2 p-1 text-end">Password:</span>
+            <span class="col p-1">${password}</span>
+            <span class="col p-1"><a href=""><i class="bi bi-copy"></i></a></span>
           </div>
-          <div class="url">
-            <span>URL:</span>
-            <span><a href="${url}">${url}</a></span>
+          <div class="url row">
+            <span class="col-2 p-1 text-end">URL:</span>
+            <span class="col p-1"><a href="${url}">${url}</a></span>
           </div>
-          <div class="category">
-            <span>Category:</span>
-            <span>${category}</span>
+          <div class="category row">
+            <span class="col-2 p-1 text-end">Category:</span>
+            <span class="col p-1">${category}</span>
           </div>
-          <div class="actions">
-              <i class="bi bi-pencil-square"></i> <i class="bi bi-trash3"></i>
+          <div class="actions text-end">
+            <button class="btn btn-warning shadow m-2" type="submit" value="edit"><i class="bi bi-pencil-square"></i> Edit</button>
+            <button class="btn btn-danger shadow m-2" type="submit" value="delete"><i class="bi bi-trash3"></i> Delete</button>
           </div>
-        </article>
+        </section>
 
-        <article class="password-item-form">
-          <form id="form">
-            <div>
-              <label for="website-name">Website:</label>
-              <input type="text" id="webName" name="webName">
+        <section class="password-item rounded shadow">
+          <h2>Edit / Create New Password</h2>
+          <form id="form" class="row">
+            <div class="col">
+              <div class="website-name row">
+                <div class="col-3 p-1 text-end"><label for="website-name">Website:</label></div>
+                <div class="col-3"><input type="text" id="webName" name="webName"></div>
+              </div>
+              <div class="user-id row">
+                <div class="col-3 p-1 text-end"><label for="user-name">User Name:</label></div>
+                <div class="col-3"><input type="text" id="userName" name="userName"></div>
+              </div>
+              <div class="password row">
+                <div class="col-3 p-1 text-end"><label for="password">Password:</label></div>
+                <div class="col-3"><input type="text" id="password" name="password"></div>
+              </div>
             </div>
-            <div>
-              <label for="user-name">User Name:</label>
-              <input type="text" id="userName" name="userName">
+            <div class="col">
+              <div class="url row">
+                <div class="col-3 p-1 text-end"><label for="url">URL:</label></div>
+                <div class="col-3"><input type="text" id="url" name="url"></div>
+              </div>
+              <div class="category row">
+                <div class="col-3 p-1 text-end"><label for="category">Category:</label></div>
+                <div class="col-3"><input type="text" id="category" name="category"></div>
+              </div>
             </div>
-            <div>
-              <label for="password">Password:</label>
-              <input type="text" id="password" name="password">
-            </div>
-            <div>
-              <label for="url">URL:</label>
-              <input type="text" id="url" name="url">
-            </div>
-            <div>
-              <label for="url">Category:</label>
-              <input type="text" id="category" name="category">
-            </div>
-            <div>
-              <button type="submit">Save</button>
-              <button type="reset">Cancel</button>
+            <div class="actions text-end">
+              <button class="btn btn-success shadow m-2" type="submit" value="Save"><i class="bi bi-floppy"></i> Save</button>
+              <button class="btn btn-secondary shadow m-2" type="reset" value="Cancel"><i class="bi bi-exclamation-circle"></i> Cancel</button>
             </div>
           </form>
-        </article>
+        </section>
 
       </div>
 
       </div>
     </main>
-    <footer class="rounded-bottom bg-light" style="--bs-bg-opacity: .5;">Copyright 2023 | PasswordKeepR, LLC | Canada</footer>
+    <footer class="rounded-bottom bg-light" style="--bs-bg-opacity: .5; --bs-light-rgb: 218,218,202;">
+      <div>Copyright 2023 | PasswordKeepR, LLC | Canada</div>
+    </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

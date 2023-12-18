@@ -7,22 +7,35 @@ html {
 
 header.navbar  {
   min-width: 900px;
-  padding: 1em;
-  background-color: white;
+  padding: 2em;
+  background-color: #DADACA;
 }
 main {
   min-width: 900px;
   padding: 1em;
-  background-color: white;
+  background-color: #DADACA;
 }
 .container {
   background-color: white;
+  display: flex;
+  min-width: 90%;
 }
+
+.password-item {
+  min-width: 80%;
+  padding: 2em;
+  margin: 1em;
+  background-color: #FFF;
+}
+
+
 footer {
   min-width: 900px;
-  padding: 1em;
-  background-color: white;
+  padding: 2em;
+  background-color: #DADACA;
 }
+
+
 .bg-light {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
