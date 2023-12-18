@@ -34,6 +34,7 @@ const usersRoutes = require('./routes/users');
 const passwordApiRoutes = require('./routes/passwords-api');
 const organizationApiRoutes = require('./routes/organizations-api');
 const categoryApiRoutes = require('./routes/categories-api');
+const passwordCategoryApiRoutes = require('./routes/passwordsCategories-api');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -41,10 +42,13 @@ const categoryApiRoutes = require('./routes/categories-api');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+
 // Note: mount other resources here, using the same pattern above
 app.use('/api/passwords', passwordApiRoutes);
 app.use('/api/organizations', organizationApiRoutes);
 app.use('/api/categories', categoryApiRoutes);
+app.use('/api/passwordsCategoriesJoin', passwordCategoryApiRoutes);
+
 
 // Home page
 // Warning: avoid creating more routes in this file!
