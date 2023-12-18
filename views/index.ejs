@@ -33,10 +33,46 @@
         <div class="menu"><a href="" >List All</a> | <a href="">Logout ></a></div>
         <button type="button" class="btn btn-success mt-2"><i class="bi bi-plus"></i> New Password</button>
       </navigation>
-    </header> <!-- Will contain logo, etc -->
+    </header>
     <main class="bg-light" style="--bs-bg-opacity: .5; --bs-light-rgb: 218,218,202;">
+      <!-- container for holding the Edit/Add new password Form -->
+      <div class="container">
+        <section class="password-item rounded shadow m-0">
+          <h2>Edit / Create New Password</h2>
+          <form id="form" class="row">
+            <div class="col m-0">
+              <div class="website-name row m-0">
+                <div class="col-3 p-1 text-end"><label for="website-name">Website:</label></div>
+                <div class="col-2"><input type="text" id="webName" name="webName"></div>
+              </div>
+              <div class="user-id row m-0">
+                <div class="col-3 p-1 text-end"><label for="user-name">User Name:</label></div>
+                <div class="col-2"><input type="text" id="userName" name="userName"></div>
+              </div>
+              <div class="password row m-0">
+                <div class="col-3 p-1 text-end"><label for="password">Password:</label></div>
+                <div class="col-2"><input type="text" id="password" name="password"></div>
+              </div>
+            </div>
+            <div class="col mt-0">
+              <div class="url row m-0">
+                <div class="col-3 p-1 text-end"><label for="url">URL:</label></div>
+                <div class="col-3"><input type="text" id="url" name="url"></div>
+              </div>
+              <div class="category row m-0">
+                <div class="col-3 p-1  m-0 text-end"><label for="category">Category:</label></div>
+                <div class="col-3 m-0"><input type="text" id="category" name="category"></div>
+              </div>
+            </div>
+            <div class="actions text-end">
+              <button class="btn btn-success shadow m-2" type="submit" value="Save"><i class="bi bi-floppy"></i> Save</button>
+              <button class="btn btn-secondary shadow m-2" type="reset" value="Cancel"><i class="bi bi-exclamation-circle"></i> Cancel</button>
+            </div>
+          </form>
+        </section>
+      </div>
       <!-- container for holding the tweets from the database -->
-      <div id="container">
+      <div id="password-list">
 
         <section class="password-item rounded shadow">
           <div class="website-name row">
@@ -64,40 +100,6 @@
             <a href="" title="Edit"><i class="bi bi-pencil-square"></i></a> |
             <a href="" title="Delete"><i class="bi bi-trash3"></i></a>
           </div>
-        </section>
-
-        <section class="password-item rounded shadow">
-          <h2>Edit / Create New Password</h2>
-          <form id="form" class="row">
-            <div class="col">
-              <div class="website-name row">
-                <div class="col-3 p-1 text-end"><label for="website-name">Website:</label></div>
-                <div class="col-3"><input type="text" id="webName" name="webName"></div>
-              </div>
-              <div class="user-id row">
-                <div class="col-3 p-1 text-end"><label for="user-name">User Name:</label></div>
-                <div class="col-3"><input type="text" id="userName" name="userName"></div>
-              </div>
-              <div class="password row">
-                <div class="col-3 p-1 text-end"><label for="password">Password:</label></div>
-                <div class="col-3"><input type="text" id="password" name="password"></div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="url row">
-                <div class="col-3 p-1 text-end"><label for="url">URL:</label></div>
-                <div class="col-3"><input type="text" id="url" name="url"></div>
-              </div>
-              <div class="category row">
-                <div class="col-3 p-1 text-end"><label for="category">Category:</label></div>
-                <div class="col-3"><input type="text" id="category" name="category"></div>
-              </div>
-            </div>
-            <div class="actions text-end">
-              <button class="btn btn-success shadow m-2" type="submit" value="Save"><i class="bi bi-floppy"></i> Save</button>
-              <button class="btn btn-secondary shadow m-2" type="reset" value="Cancel"><i class="bi bi-exclamation-circle"></i> Cancel</button>
-            </div>
-          </form>
         </section>
 
       </div>
