@@ -66,6 +66,7 @@ const loadPasswords = function () {
 
 
 
+
 $(document).ready(function () {
   // Load passwords and rendering.
   loadPasswords().then((response) => {
@@ -74,44 +75,66 @@ $(document).ready(function () {
   }).catch(function (error) {
     console.error('Error loading passwords:', error);
   });
+
+
+
+});
+
+
+// Post password details to server when new password is saved
+$("#form").on("submit", function (event) {
+  event.preventDefault();
+
+  //validation
+
+  //If everything goes great, proceed with sending tweet to server
+  const formData = $(event.currentTarget).serialize();
+  console.log(formData);
+
+
+
+
 });
 
 
 
-  // Post tweet details to server when Tweet is submitted
-  // $("#form").on("submit", function(event) {
-  //   event.preventDefault();
-
-  //   //validation
-
-  //   //If everything goes great, proceed with sending tweet to server
-  //   const formData = $(event.currentTarget).serialize();
-  //   console.log(formData);
-  //   $.ajax({
-  //     method: "POST",
-  //     url: "/api",
-  //     data: formData
-  //   }).then(() => {
-  //     loadTweets().then((tweets) => {
-  //       $(".counter").text("140");
-  //       // post success message
-  //       let SuccessMessage = $(".success-message");
-  //       SuccessMessage.text("Tweet Successfully Posted!").show();
-  //       setTimeout(() => {
-  //         SuccessMessage.hide();
-  //       }, 2500);
-  //       // render tweets
-  //       renderTweets(tweets);
-  //     }).catch(function(error) {
-  //       console.error("Error loading tweets:", error);
-  //     });
-
-  //     $tweetText.val("");
-  //   });
 
 
-  // });
 
-  
+// // Post password details to server when new password is saved
+// $("#form").on("submit", function(event) {
+//   event.preventDefault();
+
+//   //validation
+
+//   //If everything goes great, proceed with sending tweet to server
+//   const formData = $(event.currentTarget).serialize();
+//   console.log(formData);
+//   $.ajax({
+//     method: "POST",
+//     url: "/api",
+//     data: formData
+//   }).then(() => {
+//     loadTweets().then((tweets) => {
+//       $(".counter").text("140");
+//       // post success message
+//       let SuccessMessage = $(".success-message");
+//       SuccessMessage.text("Tweet Successfully Posted!").show();
+//       setTimeout(() => {
+//         SuccessMessage.hide();
+//       }, 2500);
+//       // render tweets
+//       renderTweets(tweets);
+//     }).catch(function(error) {
+//       console.error("Error loading tweets:", error);
+//     });
+
+//     $tweetText.val("");
+//   });
+
+
+// //  });
+
+
 
 
