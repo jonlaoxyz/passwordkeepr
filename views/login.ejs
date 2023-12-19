@@ -30,20 +30,22 @@
     </header>
     <main class="login bg-light" style="--bs-bg-opacity: .5; --bs-light-rgb: 218,218,202;">
 
-      <div class="container justify-content-center flex-column mt-5">
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
+      <form action="/login" method="post">
+        <div class="container justify-content-center flex-column mt-5">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" required>
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password" required>
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-secondary px-4">LOGIN</button>
+          </div>
         </div>
-        <div class="form-floating mb-3">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
-        </div>
-        <div class="text-center">
-          <button type="button" class="btn btn-secondary px-4">LOGIN</button>
-        </div>
-      </div>
-
+      </form>
+      
     </main>
     <footer class="login rounded-bottom-4 bg-light text-center" style="--bs-bg-opacity: .5; --bs-light-rgb: 218,218,202;">
       <div>Copyright 2023 | PasswordKeepR, LLC | Canada</div>

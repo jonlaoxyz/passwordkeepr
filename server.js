@@ -6,8 +6,12 @@ const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 
+
+
+
 const PORT = process.env.PORT || 8080;
 const app = express();
+// Add express-session middleware with a secret
 
 app.set('view engine', 'ejs');
 
@@ -26,6 +30,7 @@ app.use(
 );
 app.use(express.static('public'));
 
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
@@ -35,6 +40,8 @@ const passwordApiRoutes = require('./routes/passwords-api');
 const organizationApiRoutes = require('./routes/organizations-api');
 const categoryApiRoutes = require('./routes/categories-api');
 const passwordCategoryApiRoutes = require('./routes/passwordsCategories-api');
+const loginRoutes = require('./routes/login');
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -43,11 +50,13 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 
+
 // Note: mount other resources here, using the same pattern above
 app.use('/api/passwords', passwordApiRoutes);
 app.use('/api/organizations', organizationApiRoutes);
 app.use('/api/categories', categoryApiRoutes);
 app.use('/api/passwordsCategoriesJoin', passwordCategoryApiRoutes);
+app.use('/login', loginRoutes);
 
 
 // Home page
@@ -58,9 +67,7 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
-app.get('/login', (req, res) => {
-  res.render('login');
-});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
