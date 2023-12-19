@@ -37,11 +37,14 @@ body {
 .bi-pencil-square:hover {
   cursor: pointer;
   color: blue;
-  padding: 0.5em;
 }
 
 .bi-trash3 {
-  color: red;
+  color: #575757;
   padding: 0.5em;
   margin: 0 1em;
+}
+
+.bi-trash3:hover {
+  color: red;
 }
