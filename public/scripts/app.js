@@ -38,7 +38,7 @@ const createPasswordElement = function (passwordObj) {
 // Append new password to the password-container
 const renderPasswords = function (response) {
   const passwords = response.passwordsCategoriesJoin; // Extract passwords from the response
-  $('#password-container').empty();
+  // $('#password-container').empty();
   for (const password of passwords) {
     const $password = createPasswordElement(password);
 
@@ -49,7 +49,7 @@ const renderPasswords = function (response) {
 
 
 // Function to loads a password from '/api/passwordsCategoriesJoin' and recieve an array of tweets in json
-const loadPasswords = function() {
+const loadPasswords = function () {
   return $.ajax({
     method: "GET",
     url: "/api/passwordsCategoriesJoin",
@@ -57,12 +57,44 @@ const loadPasswords = function() {
   });
 };
 
-$(document).ready(function() {
+$(document).ready(function () {
 
   // Load passwords and rendering.
   loadPasswords().then((passwords) => {
     renderPasswords(passwords);
-  }).catch(function(error) {
+  }).catch(function (error) {
     console.error("Error loading tweets:", error);
   });
+
+  // Post tweet details to server when Tweet is submitted
+  $("#form").on("submit", function (event) {
+    event.preventDefault();
+
+    //validation
+    
+
+    //If everything goes great, proceed with sending password to server
+    const formData = $(event.currentTarget).serialize();
+    console.log(formData);
+    $.ajax({
+      method: "POST",
+      url: "/api/passwords",
+      data: formData
+    }).then(() => {
+      loadPasswords().then((password) => {
+        console.log("success");
+        // render passwords
+        renderPasswords(password);
+      }).catch(function (error) {
+        console.error("Error loading tweets:", error);
+      });
+
+      // Clear form fields
+      // $(event.currentTarget).trigger('reset');
+    });
+
+
+  });
+
+
 });

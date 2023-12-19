@@ -33,38 +33,46 @@
       <!-- container for holding the tweets from the database -->
       <div id="container">
 
+        
+
+        <section id="new-password">
+          <article class="password-item-form">
+            <form id="form" action="/api/passwords" method="POST">
+              <div>
+                <label for="website-name">Website:</label>
+                <input type="text" id="webName" name="webName">
+              </div>
+              <div>
+                <label for="user-name">User Name:</label>
+                <input type="text" id="userName" name="userName">
+              </div>
+              <div>
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password">
+              </div>
+              <div>
+                <label for="url">URL:</label>
+                <input type="text" id="url" name="url">
+              </div>
+              <div>
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category">
+              </div>
+              <div>
+                <label for="organization">organization:</label>
+                <input type="text" id="organization" name="organization">
+              </div>
+              <div>
+                <button id="submit-button" type="submit">Save</button>
+                <button type="reset">Cancel</button>
+              </div>
+            </form>
+          </article>
+        </section>
+
         <section id="password-container">
           
         </section>
-
-        <article class="password-item-form">
-          <form id="form">
-            <div>
-              <label for="website-name">Website:</label>
-              <input type="text" id="webName" name="webName">
-            </div>
-            <div>
-              <label for="user-name">User Name:</label>
-              <input type="text" id="userName" name="userName">
-            </div>
-            <div>
-              <label for="password">Password:</label>
-              <input type="text" id="password" name="password">
-            </div>
-            <div>
-              <label for="url">URL:</label>
-              <input type="text" id="url" name="url">
-            </div>
-            <div>
-              <label for="url">Category:</label>
-              <input type="text" id="category" name="category">
-            </div>
-            <div>
-              <button type="submit">Save</button>
-              <button type="reset">Cancel</button>
-            </div>
-          </form>
-        </article>
 
       </div>
 
