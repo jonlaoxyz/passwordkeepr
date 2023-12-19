@@ -10,19 +10,37 @@ body {
   background-image: url("/images/scott-webb-hDyO6rr3kqk-unsplash.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  padding-top: 2em;
+  padding: 2em;
+}
+
+.logo {
+  width: 250px;
+}
+
+.org-logo {
+  width: 250px;
 }
 
 .bi {
-  color: rgb(108, 108, 108);
+  color: rgb(255, 255, 255);
 }
 
-.bi:hover {
-  color: rgb(0, 72, 255);
+.bi-copy,
+.bi-pencil-square {
+  color: #575757;
+  padding: 0.5em;
+  margin: 0 1em;
+}
+
+.bi-copy:hover,
+.bi-pencil-square:hover {
   cursor: pointer;
+  color: blue;
+  padding: 0.5em;
 }
 
-td > i {
-  float: right;
-  padding: 0 0.7em;
+.bi-trash3 {
+  color: red;
+  padding: 0.5em;
+  margin: 0 1em;
 }
