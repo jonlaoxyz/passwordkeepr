@@ -10,11 +10,13 @@ header.navbar  {
   padding: 2em;
   background-color: #DADACA;
 }
+
 main {
   min-width: 900px;
   padding: 1em;
   background-color: #DADACA;
 }
+
 .container {
   min-width: 90%;
 }
@@ -26,17 +28,27 @@ main {
   background-color: #FFF;
 }
 
-
 footer {
   min-width: 900px;
   padding: 2em;
   background-color: #DADACA;
 }
 
-
 .bg-light {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 }
 
+/* login styles */
 
+header.login {
+  min-width: 500px;;
+}
+
+main.login {
+  min-width: 500px;;
+}
+
+footer.login {
+  min-width: 500px;;
+}
