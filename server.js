@@ -76,10 +76,10 @@ app.get('/', (req, res) => {
   if (!req.session.user_id) {
     return res.redirect('/login');
   }
+  const user = req.session.user_id;
 
-  // Render the index page if authenticated
-  res.render('index', { user: req.session.user });
-  // res.render('index');
+  // Render the index page if authenticated and pass the user data
+  res.render('index', { user });
 });
 
 

@@ -33,9 +33,9 @@
       </div>
       <navigation class="navi text-end col">
         <div><img class="org-logo" src="./images/org-logo_01.png" alt="Company Logo 01"></div>
-        <div class="mt-3">Welcome, John Doe! ${user_name}</div>
+        <div class="mt-3">Welcome, <%= user.name %>!</div>
         <div class="menu">
-          <a href="" >List All</a> | 
+          <a href="#password-list" >List All</a> | 
           <form action="/logout" method="post" style="display: inline;">
             <button type="submit" class="btn-link" style="border: none; padding: 0; background: none;">Logout</button>
           </form>
