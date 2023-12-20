@@ -39,6 +39,8 @@ router.post('/', (req, res) => {
         return res.status(403).send("Invalid email or password");
       }
 
+      
+      req.session.user_id = user;
 
       res.redirect('/');
     })

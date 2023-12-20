@@ -5,13 +5,20 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieSession = require("cookie-session");
 
 
 
 
 const PORT = process.env.PORT || 8080;
 const app = express();
-// Add express-session middleware with a secret
+
+app.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
+  })
+);
 
 app.set('view engine', 'ejs');
 
@@ -64,7 +71,14 @@ app.use('/login', loginRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  // Check if the user is authenticated
+  if (!req.session.user_id) {
+    return res.redirect('/login');
+  }
+
+  // Render the index page if authenticated
+  res.render('index', { user: req.session.user });
+  // res.render('index');
 });
 
 
