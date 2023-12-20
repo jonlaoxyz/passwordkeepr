@@ -34,7 +34,12 @@
       <navigation class="navi text-end col">
         <div><img class="org-logo" src="./images/org-logo_01.png" alt="Company Logo 01"></div>
         <div class="mt-3">Welcome, John Doe! ${user_name}</div>
-        <div class="menu"><a href="" >List All</a> | <a href="">Logout ></a></div>
+        <div class="menu">
+          <a href="" >List All</a> | 
+          <form action="/logout" method="post" style="display: inline;">
+            <button type="submit" class="btn-link" style="border: none; padding: 0; background: none;">Logout</button>
+          </form>
+        </div>
         <button type="button" class="btn btn-success shadow mt-3"><i class="bi bi-plus"></i> New Password</button>
       </navigation>
     </header>

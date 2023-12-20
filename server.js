@@ -48,7 +48,7 @@ const organizationApiRoutes = require('./routes/organizations-api');
 const categoryApiRoutes = require('./routes/categories-api');
 const passwordCategoryApiRoutes = require('./routes/passwordsCategories-api');
 const loginRoutes = require('./routes/login');
-
+const indexRoutes = require('./routes/index');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -64,6 +64,7 @@ app.use('/api/organizations', organizationApiRoutes);
 app.use('/api/categories', categoryApiRoutes);
 app.use('/api/passwordsCategoriesJoin', passwordCategoryApiRoutes);
 app.use('/login', loginRoutes);
+app.use('/', indexRoutes);
 
 
 // Home page
