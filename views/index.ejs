@@ -211,23 +211,29 @@
     charset += '!@#$%^&*()-_+=<>?';
   }
 
-  let password = '';
-  let prevChar = '';
+  let password = [];
+  let usedChars = [];
+
+  if (excludeDuplicates && length > charset.length) {
+    console.error('Password length exceeds the available character set. Unable to generate a unique password.');
+    return '';
+  }
 
   for (let i = 0; i < length; i++) {
     let randomChar = charset.charAt(Math.floor(Math.random() * charset.length));
 
-    // Check if excluding duplicates is enabled and the current character is the same as the previous one
-    if (excludeDuplicates && randomChar === prevChar) {
-      // If so, generate a new random character
-      i--;
-      continue;
+    if (excludeDuplicates) {
+      while (usedChars.includes(randomChar)) {
+        randomChar = charset.charAt(Math.floor(Math.random() * charset.length));
+      }
+      usedChars.push(randomChar);
     }
 
-    password += randomChar;
-    prevChar = randomChar;
+    password.push(randomChar);
   }
-  return password;
+
+  return password.join('');
+  
 }
 
 </script>
