@@ -48,3 +48,35 @@ body {
 .bi-trash3:hover {
   color: red;
 }
+
+h1.mainList {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: bold;
+  font-style: italic;
+  color: #6B8E23;
+}
+
+h2 {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.bi-arrow-up-square {
+  font-size: 50px;
+  text-shadow: rgb(44, 44, 44) 1px 0 10px;
+}
+
+.bi-arrow-up-square:hover {
+  color: #ffc800;
+}
+
+.scrollup {
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  text-align: center;
+  padding: 10px;
+  z-index: 100;
+  display: none;
+}

@@ -20,6 +20,16 @@
   <script defer src="/scripts/app.js"></script>
   <script src="/scripts/copyToClipboard.js"></script>
 
+  <script>
+    $(document).ready(function(){
+      $("#newPassword").hide();
+      $("#newEntry").click(function(){
+        $("#sectionHeader").text("Create New Password");
+        $("#passwordForm").trigger("reset");
+        $("#newPassword").toggle();
+      });
+    });
+  </script>
 
 
 </head>
@@ -40,19 +50,19 @@
             <button type="submit" class="btn-link" style="border: none; padding: 0; background: none;">Logout</button>
           </form>
         </div>
-        <button type="button" class="btn btn-success shadow mt-3"><i class="bi bi-plus"></i> New Password</button>
+        <button type="button" id="newEntry" class="btn btn-success shadow mt-3"><i class="bi bi-plus"></i> New Password</button>
       </navigation>
     </header>
     <main class="bg-light" style="--bs-bg-opacity: .5; --bs-light-rgb: 218,218,202;">
       <!-- container for holding the Edit/Add new password Form -->
 
-        <section id="newPassword" class="rounded bg-light-subtle shadow m-3 p-4">
-          <h2>Edit / Create New Password</h2>
-          <form id="form">
+        <section id="newPassword" class="rounded-3 bg-light-subtle shadow m-3 p-4">
+          <h2 id="sectionHeader"></h2>
+          <form id="passwordForm">
             <div class="row">
               <div class="website-name col-6">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="websiteName" placeholder="Website Name">
+                  <input type="text" class="form-control" id="websiteName" placeholder="Website Name">
                   <label for="websiteName">Website Name</label>
                 </div>
               </div>
@@ -144,7 +154,7 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <button onclick="generate()" class="btn btn-warning shadow m-2"><i class="bi bi-lightning-charge-fill"></i> RANDOMIZE!</button>
+                  <button type="button" id="randomize" onclick="generate()" class="btn btn-warning shadow m-2"><i class="bi bi-lightning-charge-fill"></i> RANDOMIZE!</button>
                 </div>
               </div>
             </div>
@@ -161,6 +171,9 @@
 
 
       <!-- container for holding the passwords from the database -->
+      <div class="ms-4">
+        <h1 class="mainList">Passwords List</h1>
+      </div>
       <div id="password-list">
 
 
@@ -235,7 +248,27 @@
   return password.join('');
   
 }
+</script>
 
+<!-- SMOOTH SCROLL -->
+<a href="" class="scrollup float-right">
+  <i class="bi bi-arrow-up-square"></i>
+</a>
+
+<script>
+  $(window).scroll(function() {
+  if ($(this).scrollTop() > 600) {
+    $(".scrollup").fadeIn();
+  } else {
+    $(".scrollup").fadeOut();
+  }
+  })
+  $(".scrollup").click(function() {
+    $("html, body").animate({
+      scrollTop: 0
+    }, 600);
+    return false;
+  })
 </script>
 
 </body>
