@@ -45,23 +45,28 @@
           <h2>Edit / Create New Password</h2>
           <form id="form">
             <div class="row">
-              <div class="website-name col">
-                <div class=""><label for="website-name">Website:</label></div>
-                <div class=""><input type="text" id="webName" name="webName"></div>
+              <div class="website-name col-6">
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="websiteName" placeholder="Website Name">
+                  <label for="floatingInput">Website Name</label>
+                </div>
               </div>
-
-              <div class="url col">
-                <div class=""><label for="url">URL:</label></div>
-                <div class=""><input type="text" id="url" name="url"></div>
+              <div class="url col-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="url" placeholder="Website Address">
+                  <label for="floatingInput">URL</label>
+                </div>
               </div>
             </div>
             <div class="row">
-              <div class="user-id col">
-                <div class=""><label for="user-name">User Name:</label></div>
-                <div class=""><input type="text" id="userName" name="userName"></div>
+              <div class="user-id col-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="userName" placeholder="User Name">
+                  <label for="floatingInput">User Name</label>
+                </div>
               </div>
 
-              <div class="category col">
+              <div class="category col-6">
                 <label for="categories" class="form-label">Category:</label>
                 <input class="form-control" list="categoryOptions" id="categories" placeholder="Type to search...">
                 <datalist id="categoryOptions">
@@ -74,51 +79,64 @@
                 </datalist>
               </div>
             </div>
-
-            <div class="row">
-              <div class="password col">
-                <div class=""><label for="password">Password:</label></div>
-                <div class=""><input type="text" id="password" name="password"></div>
-
-                <div class="row">
-                  <label for="customRange1" class="form-label">Number of Characters:</label>
-                  <input type="range" class="form-range" id="customRange1" value="8" min="8" max="30" oninput="this.nextElementSibling.value = this.value">
-                  <output class="col">8</output>
-                </div>
-
-                <div class="row">
-                  <div class="form-check col">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      ABCDE
-                    </label>
-                  </div>
-                  <div class="form-check col">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
-                      abcde
-                    </label>
+            <!-- random password generator area -->
+            <div class="border border-light rounded p-3 mt-2">
+              <div class="row">
+                <div class="password col-6">
+                  <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="password" placeholder="Password">
+                    <label for="floatingInput">Password:</label>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="form-check col">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      12345
-                    </label>
-                  </div>
-                  <div class="form-check col">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                    <label class="form-check-label" for="flexCheckChecked">
-                      !@#$%
-                    </label>
-                  </div>
+                <div class="col-6">
+                  <label for="passwordRange" class="form-label">Number of Characters: <span id="count"> 8</span></label>
+                  <input type="range" class="form-range" id="passwordRange" value="8" min="8" max="30">
+                  <script>
+                    var slider = document.getElementById("passwordRange");
+                    var output = document.getElementById("count");
+                    output.innerHTML = slider.value; // Display the default slider value
+
+                    // Update the current slider value (each time you drag the slider handle)
+                    slider.oninput = function() {
+                      output.innerHTML = this.value;
+                    }
+                    </script>
                 </div>
               </div>
-
-
+              <div class="row ps-5">
+                <div class="form-check form-switch col-6">
+                  <input class="form-check-input" type="checkbox" role="switch" value="" id="allCaps">
+                  <label class="form-check-label" for="allCaps">
+                    ABCDE
+                  </label>
+                </div>
+                <div class="form-check form-switch col-6">
+                  <input class="form-check-input" type="checkbox" role="switch" value="" id="lowerCase">
+                  <label class="form-check-label" for="lowerCase">
+                    abcde
+                  </label>
+                </div>
+              </div>
+              <div class="row ps-5">
+                <div class="form-check form-switch col-6">
+                  <input class="form-check-input" type="checkbox" role="switch" value="" id="numbers">
+                  <label class="form-check-label" for="numbers">
+                    12345
+                  </label>
+                </div>
+                <div class="form-check form-switch col-3">
+                  <input class="form-check-input" type="checkbox" role="switch" value="" id="symbols">
+                  <label class="form-check-label" for="symbols">
+                    !@#$%
+                  </label>
+                </div>
+                <div class="col-3">
+                  <button class="btn btn-warning shadow m-2" type="submit" value="generate"><i class="bi bi-lightning-charge-fill"></i> GENERATE</button>
+                </div>
+              </div>
             </div>
-            <div class="row">
+
+            <div class="row text-center">
               <div class="actions col">
                 <button class="btn btn-success shadow m-2" type="submit" value="Save"><i class="bi bi-floppy"></i> Save</button>
                 <button class="btn btn-secondary shadow m-2" type="reset" value="Cancel"><i class="bi bi-exclamation-circle"></i> Cancel</button>
@@ -141,6 +159,8 @@
     </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+
 
 </body>
 
