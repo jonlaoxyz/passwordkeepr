@@ -176,7 +176,7 @@ $(document).ready(function () {
 
     const requestBodyJSON = requestBody;
 
-    //If everything goes great, proceed with sending tweet to server
+    //If everything goes great, proceed with sending password to server
     $.ajax({
       method: "POST",
       url: "/api/passwords",
@@ -218,7 +218,7 @@ $(document).ready(function () {
   });
 
 
-
+  // Add click event for edit-password
   $('#password-list').on('click', '.bi-pencil-square', function (event) {
     event.preventDefault();
     const passwordId = $(this).data('password-id');
@@ -230,7 +230,8 @@ $(document).ready(function () {
     fetchPasswordDetails(passwordId);
 
   });
-
+  
+  // Add click event for cross-icon and cancel-button
   $("#cancelButton , #closeMe").on("click", function (event) {
     event.preventDefault();
     $("#newPassword").hide();
