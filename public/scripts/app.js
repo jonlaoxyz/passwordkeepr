@@ -27,7 +27,7 @@ const createPasswordElement = function (passwordObj) {
       </div>
       <div class="actions text-end">
         <a href="" title="Edit"><i class="bi bi-pencil-square"></i></a> |
-        <a href="" title="Delete"><i class="bi bi-trash3"></i></a>
+        <a href="" title="Delete" class="delete-password" data-password-id="${passwordObj.id}"><i class="bi bi-trash3"></i></a>
       </div>
     </section>
   `);
@@ -75,21 +75,49 @@ const convertCategoryToId = function (categoryName) {
     "Education": 6,
   };
 
-  return categoryMapping[categoryName] || null;
+  return categoryMapping[categoryName];
 };
+
+
+// Function to delete a password
+const deletePassword = function (passwordId) {
+  $.ajax({
+    method: "DELETE",
+    url: `/api/passwords/${passwordId}`,
+    success: function (response) {
+      console.log("Password deleted:", response);
+
+      // Reload passwords and render them after deletion
+      loadPasswords().then((response) => {
+        const passwords = response.passwordsCategoriesJoin;
+        renderPasswords(passwords);
+      }).catch(function (error) {
+        console.error('Error loading passwords:', error);
+      });
+
+      alert("Password deleted successfully!");
+    },
+    error: function (error) {
+      console.error('Error deleting password:', error);
+      alert("Error deleting password. Please try again.");
+    },
+  });
+};
+
+
 
 
 
 $(document).ready(function () {
   // Load passwords and rendering.
   loadPasswords().then((response) => {
-    const passwords = response.passwordsCategoriesJoin; // Access the array property
+    const passwords = response.passwordsCategoriesJoin;
     renderPasswords(passwords);
   }).catch(function (error) {
     console.error('Error loading passwords:', error);
   });
 
-  // Post password details to server when new password is saved
+  // Add click event for save button on password form
   $("#passwordForm").on("submit", function (event) {
     event.preventDefault();
     console.log("formData");
@@ -108,8 +136,6 @@ $(document).ready(function () {
     // Convert category name to category_id
     const categoryId = convertCategoryToId(category);
     const organizationId = 1;
-
-
 
     const requestBody = {
       websiteName: websiteName,
@@ -152,6 +178,14 @@ $(document).ready(function () {
       },
     });
 
+  });
+
+
+  // Add click event for delete-password
+  $('#password-list').on('click', '.delete-password', function (event) {
+    event.preventDefault();
+    const passwordId = $(this).data('password-id');
+    deletePassword(passwordId);
   });
 
 

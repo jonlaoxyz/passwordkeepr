@@ -14,9 +14,23 @@ const createPassword = (websiteName, userName, password, url, categoryId, organi
     RETURNING *
   `, [websiteName, userName, password, url, categoryId, organizationId])
     .then(data => {
-      return data.rows[0]; // Assuming you expect only one row to be returned
+      return data.rows[0];
+    });
+};
+
+const getPasswordById = (passwordId) => {
+  return db.query('SELECT * FROM passwords WHERE id = $1', [passwordId])
+    .then(data => {
+      return data.rows;
     });
 };
 
 
-module.exports = { getPasswords , createPassword };
+const deletePassword = (passwordId) => {
+  return db.query('DELETE FROM passwords WHERE id = $1', [passwordId])
+    .then(data => {
+      return data.rows;
+    });
+};
+
+module.exports = { getPasswords, createPassword, getPasswordById, deletePassword };

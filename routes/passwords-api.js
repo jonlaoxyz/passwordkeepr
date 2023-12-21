@@ -32,5 +32,32 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+  const passwordId = req.params.id;
+  passwordQueries.getPasswordById(passwordId)
+    .then(password => {
+      if (password) {
+        res.json({ password });
+      } else {
+        res.status(404).json({ message: 'Password not found' });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
+// DELETE /api/passwords/:id
+router.delete('/:id', (req, res) => {
+  const passwordId = req.params.id;
+  passwordQueries.deletePassword(passwordId)
+    .then(() => {
+      res.json({ message: 'Password deleted successfully' });
+    })
+    .catch(err => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 
 module.exports = router;
