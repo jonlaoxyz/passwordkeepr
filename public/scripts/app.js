@@ -3,7 +3,7 @@
 // Creating new password
 const createPasswordElement = function (passwordObj) {
   const $passwordContainer = $(`
-  <section class="password-item rounded shadow">
+    <section class="password-item rounded shadow">
       <div class="website-name row">
         <h2>${passwordObj.website_name}</h2>
       </div>
@@ -55,7 +55,7 @@ const renderPasswords = function (passwords) {
 
 };
 
-// Function to loads a password from '/api/passwordsCategoriesJoin' and recieve an array of tweets in json
+// Function to loads a password from '/api/passwordsCategoriesJoin' and recieve an array of passwords in json
 const loadPasswords = function () {
   return $.ajax({
     method: "GET",
@@ -170,6 +170,7 @@ $(document).ready(function () {
 
         // show a success message to the user
         alert("Password saved successfully!");
+        $("#newPassword").hide();
       },
       error: function (error) {
         // error response from the server

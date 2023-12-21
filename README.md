@@ -44,3 +44,5 @@ The following steps are only for _one_ of the group members to perform.
 - PG 6.x
 - SASS
 - Bootstrap ( npm i bootstrap@5.3.2 )
+- JQUERY
+- JQUERY UI

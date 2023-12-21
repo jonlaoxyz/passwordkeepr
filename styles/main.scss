@@ -53,7 +53,7 @@ h1.mainList {
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: bold;
   font-style: italic;
-  color: #6B8E23;
+  color: #69784a;
 }
 
 h2 {
@@ -79,4 +79,19 @@ h2 {
   padding: 10px;
   z-index: 100;
   display: none;
+}
+
+button.btn-success {
+  background-color: #69784a;
+  border-color: #69784a;
+}
+
+button.btn-success:hover {
+  background-color: #4c631e;
+  border-color: #4c631e;
+}
+
+button.btn-secondary {
+  background-color: #898989;
+  border-color: #898989;
 }
