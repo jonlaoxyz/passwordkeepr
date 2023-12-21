@@ -26,7 +26,7 @@ const createPasswordElement = function (passwordObj) {
         <span class="col p-1">${passwordObj.category_name}</span>
       </div>
       <div class="actions text-end">
-        <a href="" title="Edit"><i class="bi bi-pencil-square"></i></a> |
+        <a href="" title="Edit" ><i class="bi bi-pencil-square class="edit-password" data-password-id="${passwordObj.id}"></i></a> |
         <a href="" title="Delete" class="delete-password" data-password-id="${passwordObj.id}"><i class="bi bi-trash3"></i></a>
       </div>
     </section>
@@ -76,6 +76,34 @@ const convertCategoryToId = function (categoryName) {
   };
 
   return categoryMapping[categoryName];
+};
+
+// Function to fetch password details by ID
+const fetchPasswordDetails = function (passwordId) {
+
+  $.ajax({
+    method: "GET",
+    url: `/api/passwords/${passwordId}`,
+    dataType: "json"
+  })
+    .then((response) => {
+
+      const passwordDetails = response.password[0];
+      console.log(passwordDetails[0]);
+      populateEditForm(passwordDetails);
+    })
+    .catch((error) => {
+      console.error('Error fetching password details:', error);
+    });
+};
+
+// Function to populate the edit form with password details
+const populateEditForm = function (passwordDetails) {
+  $("#websiteName").val(passwordDetails.website_name);
+  $("#url").val(passwordDetails.url);
+  $("#userName").val(passwordDetails.username);
+  $("#categories").val(passwordDetails.category_id);
+  $("#outputPassword").val(passwordDetails.password);
 };
 
 
@@ -188,6 +216,31 @@ $(document).ready(function () {
     const passwordId = $(this).data('password-id');
     deletePassword(passwordId);
   });
+
+
+
+  $('#password-list').on('click', '.bi-pencil-square', function (event) {
+    event.preventDefault();
+    const passwordId = $(this).data('password-id');
+    $("#sectionHeader").text("Edit Form");
+    
+    $('#newPassword').show();
+    $(".mainList").hide();
+    $("#password-list").hide();
+    fetchPasswordDetails(passwordId);
+
+  });
+
+  $("#cancelButton , #closeMe").on("click", function (event) {
+    event.preventDefault();
+    $("#newPassword").hide();
+    $(".mainList").show();
+    $("#password-list").show();
+
+  
+});
+
+
 
 
 });

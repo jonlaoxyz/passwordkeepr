@@ -53,7 +53,6 @@
         <div><a href="https://www.lighthouselabs.ca/" title="Light House Labs" target="_blank"><img class="org-logo" src="./images/org-logo_01.png" alt="Company Logo 01"></a></div>
         <div class="mt-3">Welcome, <%= user.name %>!</div>
         <div class="menu">
-          <a href="#password-list" >List All</a> |
           <form action="/logout" method="post" style="display: inline;">
             <button type="submit" class="btn-link" style="border: none; padding: 0; background: none;">Logout</button>
           </form>
@@ -175,7 +174,7 @@
             <div class="row text-center">
               <div class="actions col">
                 <button class="btn btn-success shadow m-2 ps-3 pe-4" type="submit" value="Save"><i class="bi bi-floppy ps-2 pe-2"></i> Save</button>
-                <button class="btn btn-secondary shadow m-2 ps-3 pe-4" type="reset" value="Cancel"><i class="bi bi-exclamation-circle ps-2 pe-2"></i> Cancel</button>
+                <button id="cancelButton"   class="btn btn-secondary shadow m-2 ps-3 pe-4" type="reset" value="Cancel"><i class="bi bi-exclamation-circle ps-2 pe-2"></i> Cancel</button>
               </div>
             </div>
           </form>
