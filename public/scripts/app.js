@@ -66,7 +66,6 @@ const loadPasswords = function () {
 
 // Convert category name to category_id function
 const convertCategoryToId = function (categoryName) {
-  // Replace this with your logic to convert category name to category_id
   const categoryMapping = {
     "Social": 1,
     "Work Related": 2,
