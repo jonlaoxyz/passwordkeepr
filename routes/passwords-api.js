@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const passwordQueries = require('../db/queries/passwords');
 
+
 // GET /api/passwords
 router.get('/', (req, res) => {
   passwordQueries.getPasswords()
@@ -17,15 +18,16 @@ router.get('/', (req, res) => {
 
 // POST /api/password
 router.post('/', (req, res) => {
-  const { website_name, username, password, url, category_id, organization_id } = req.body;
 
-  passwordQueries.createPassword(website_name, username, password, url, category_id, organization_id)
+  const { websiteName, userName, outputPassword, url, categoryId, organizationId } = req.body;
+  console.log(userName);
+  passwordQueries.createPassword(websiteName, userName, outputPassword, url, categoryId, organizationId)
     .then(newPassword => {
       console.log('success');
       res.status(201).json({ newPassword });
     })
     .catch(err => {
-      console.log("failure");
+      console.log("Failure: Error creating new password:", err);
       res.status(500).json({ error: err.message });
     });
 });

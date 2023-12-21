@@ -64,6 +64,20 @@ const loadPasswords = function () {
   });
 };
 
+// Convert category name to category_id function
+const convertCategoryToId = function (categoryName) {
+  // Replace this with your logic to convert category name to category_id
+  const categoryMapping = {
+    "Social": 1,
+    "Work Related": 2,
+    "Entertainment": 3,
+    "Finance": 4,
+    "Health and Fitness": 5,
+    "Education": 6,
+  };
+
+  return categoryMapping[categoryName] || null;
+};
 
 
 
@@ -76,65 +90,73 @@ $(document).ready(function () {
     console.error('Error loading passwords:', error);
   });
 
+  // Post password details to server when new password is saved
+  $("#passwordForm").on("submit", function (event) {
+    event.preventDefault();
+    console.log("formData");
+
+    const websiteName = $("#websiteName").val();
+    const url = $("#url").val();
+    const userName = $("#userName").val();
+    const category = $("#categories").val();
+    const outputPassword = $("#outputPassword").val();
+    //validation
+    if (!websiteName || !url || !userName || !category || !outputPassword) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    // Convert category name to category_id
+    const categoryId = convertCategoryToId(category);
+    const organizationId = 1;
+
+
+
+    const requestBody = {
+      websiteName: websiteName,
+      url: url,
+      userName: userName,
+      outputPassword: outputPassword,
+      organizationId: organizationId,
+      categoryId: categoryId,
+    };
+
+    const requestBodyJSON = requestBody;
+
+    //If everything goes great, proceed with sending tweet to server
+    $.ajax({
+      method: "POST",
+      url: "/api/passwords",
+      data: requestBodyJSON,
+      success: function (response) {
+        // Handle the success response from the server
+        console.log("Hey:", response);
+
+        // Clear the form fields (optional)
+        $("#websiteName, #url, #userName, #categories, #outputPassword").val('');
+
+        // Load updated passwords and render them
+        loadPasswords().then((response) => {
+          const passwords = response.passwordsCategoriesJoin;
+          renderPasswords(passwords);
+        }).catch(function (error) {
+          console.error('Error loading passwords:', error);
+        });
+
+        // show a success message to the user
+        alert("Password saved successfully!");
+      },
+      error: function (error) {
+        // error response from the server
+        console.error('Error saving password:', error);
+        alert("Error saving password. Please try again.");
+      },
+    });
+
+  });
 
 
 });
-
-
-// Post password details to server when new password is saved
-$("#form").on("submit", function (event) {
-  event.preventDefault();
-
-  //validation
-
-  //If everything goes great, proceed with sending tweet to server
-  const formData = $(event.currentTarget).serialize();
-  console.log(formData);
-
-
-
-
-});
-
-
-
-
-
-
-// // Post password details to server when new password is saved
-// $("#form").on("submit", function(event) {
-//   event.preventDefault();
-
-//   //validation
-
-//   //If everything goes great, proceed with sending tweet to server
-//   const formData = $(event.currentTarget).serialize();
-//   console.log(formData);
-//   $.ajax({
-//     method: "POST",
-//     url: "/api",
-//     data: formData
-//   }).then(() => {
-//     loadTweets().then((tweets) => {
-//       $(".counter").text("140");
-//       // post success message
-//       let SuccessMessage = $(".success-message");
-//       SuccessMessage.text("Tweet Successfully Posted!").show();
-//       setTimeout(() => {
-//         SuccessMessage.hide();
-//       }, 2500);
-//       // render tweets
-//       renderTweets(tweets);
-//     }).catch(function(error) {
-//       console.error("Error loading tweets:", error);
-//     });
-
-//     $tweetText.val("");
-//   });
-
-
-// //  });
-
 
 
 

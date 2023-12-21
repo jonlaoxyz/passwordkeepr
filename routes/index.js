@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const db = require('../db/connection');
 
 
 router.post('/logout', (req, res) => {
@@ -10,5 +10,6 @@ router.post('/logout', (req, res) => {
   res.redirect('/login');
 
 });
+
 
 module.exports = router;
