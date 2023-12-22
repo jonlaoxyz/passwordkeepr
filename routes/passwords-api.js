@@ -5,6 +5,7 @@ const router = express.Router();
 const passwordQueries = require('../db/queries/passwords');
 
 
+
 // GET /api/passwords
 router.get('/', (req, res) => {
   passwordQueries.getPasswords()
@@ -58,6 +59,25 @@ router.delete('/:id', (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
+
+// Update /api/passwords/:id
+router.put('/:id', (req, res) => {
+  const passwordId = req.params.id;
+  const updatedPasswordDetails = req.body;
+
+  passwordQueries.updatePassword(passwordId, updatedPasswordDetails)
+    .then(() => {
+      res.json({ message: 'Password updated successfully' });
+    })
+    .catch(err => {
+      console.error('Error updating password:', err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    });
+
+
+});
+
+
 
 
 module.exports = router;

@@ -33,4 +33,32 @@ const deletePassword = (passwordId) => {
     });
 };
 
-module.exports = { getPasswords, createPassword, getPasswordById, deletePassword };
+const updatePassword = (passwordId, updatedPasswordDetails) => {
+  const query = `
+    UPDATE passwords
+    SET
+      website_name = $1,
+      url = $2,
+      username = $3,
+      password = $4,
+      category_id = $5
+    WHERE id = $6
+  `;
+
+  const values = [
+    updatedPasswordDetails.websiteName,
+    updatedPasswordDetails.url,
+    updatedPasswordDetails.userName,
+    updatedPasswordDetails.outputPassword,
+    updatedPasswordDetails.categoryId,
+    passwordId,
+  ];
+
+  return db.query(query, values)
+    .then(data => {
+      return data.rows;
+    });
+};
+
+
+module.exports = { getPasswords, createPassword, getPasswordById, deletePassword, updatePassword };

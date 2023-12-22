@@ -173,10 +173,14 @@
 
             <div class="row text-center">
               <div class="actions col">
-                <button class="btn btn-success shadow m-2 ps-3 pe-4" type="submit" value="Save"><i class="bi bi-floppy ps-2 pe-2"></i> Save</button>
+                <button id="editButton" class="btn btn-success shadow m-2 ps-3 pe-4" type="submit" value="Save"><i class="bi bi-floppy ps-2 pe-2"></i> Edit</button>
+                <button id="saveButton" class="btn btn-success shadow m-2 ps-3 pe-4" type="submit" value="Save"><i class="bi bi-floppy ps-2 pe-2"></i> Save</button>
                 <button id="cancelButton"   class="btn btn-secondary shadow m-2 ps-3 pe-4" type="reset" value="Cancel"><i class="bi bi-exclamation-circle ps-2 pe-2"></i> Cancel</button>
               </div>
             </div>
+            <script>
+              document.getElementById("editButton").style.display = "none";
+            </script>
           </form>
         </section>
 

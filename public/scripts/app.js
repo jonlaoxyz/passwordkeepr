@@ -78,6 +78,19 @@ const convertCategoryToId = function (categoryName) {
   return categoryMapping[categoryName];
 };
 
+const convertIdToCategory = function (idName) {
+  const categoryMapping = {
+    1 :"Social",
+    2:"Work Related",
+    3:"Entertainment",
+    4:"Finance",
+    5:"Health and Fitness",
+    6:"Education",
+  };
+
+  return categoryMapping[idName];
+};
+
 // Function to fetch password details by ID
 const fetchPasswordDetails = function (passwordId) {
 
@@ -149,6 +162,9 @@ $(document).ready(function () {
   $("#passwordForm").on("submit", function (event) {
     event.preventDefault();
     console.log("formData");
+
+
+
 
     const websiteName = $("#websiteName").val();
     const url = $("#url").val();
@@ -223,14 +239,70 @@ $(document).ready(function () {
     event.preventDefault();
     const passwordId = $(this).data('password-id');
     $("#sectionHeader").text("Edit Form");
-    
+
     $('#newPassword').show();
+    $('#editButton').show();
     $(".mainList").hide();
     $("#password-list").hide();
     fetchPasswordDetails(passwordId);
 
+    // Add click event for edit button.
+    $('#editButton').on('click', function (event) {
+      event.preventDefault();
+
+      // Get the updated values from the form
+      const websiteName = $("#websiteName").val();
+      const url = $("#url").val();
+      const userName = $("#userName").val();
+      const category = $("#categories").val();
+      const outputPassword = $("#outputPassword").val();
+
+      // Convert category name to category_id
+      const categoryId = convertCategoryToId(category);
+      const organizationId = 1;
+
+      const updatedPassword = {
+        websiteName: websiteName,
+        url: url,
+        userName: userName,
+        outputPassword: outputPassword,
+        organizationId: organizationId,
+        categoryId: categoryId,
+      };
+
+      console.log(updatedPassword);
+      // Send the updated password details to the server for editing
+      $.ajax({
+        method: "PUT",
+        url: `/api/passwords/${passwordId}`,
+        data: updatedPassword,
+        success: function (response) {
+          console.log("Password updated:", response);
+
+          $('#newPassword').hide();
+          $(".mainList").show();
+          $("#password-list").show();
+
+          // Load updated passwords and render them
+          loadPasswords().then((response) => {
+            const passwords = response.passwordsCategoriesJoin;
+            renderPasswords(passwords);
+          }).catch(function (error) {
+            console.error('Error loading passwords:', error);
+          });
+
+          // Show a success message to the user
+          // alert("Password updated successfully!");
+        },
+        error: function (error) {
+          console.error('Error updating password:', error);
+          alert("Error updating password. Please try again.");
+        },
+      });
+    });
+
   });
-  
+
   // Add click event for cross-icon and cancel-button
   $("#cancelButton , #closeMe").on("click", function (event) {
     event.preventDefault();
@@ -238,8 +310,11 @@ $(document).ready(function () {
     $(".mainList").show();
     $("#password-list").show();
 
-  
-});
+
+  });
+
+
+
 
 
 
