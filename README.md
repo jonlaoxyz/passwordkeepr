@@ -1,6 +1,10 @@
 LHL Node Skeleton
 =========
 
+## LHL MidTerm Team Project submission (December 2023)
+- Tejasva Bhatia
+- Jonathan Lao
+
 ## Project Setup
 
 The following steps are only for _one_ of the group members to perform.
@@ -36,6 +40,7 @@ The following steps are only for _one_ of the group members to perform.
 - Use the `npm run db:reset` command each time there is a change to the database schema or seeds. 
   - It runs through each of the files, in order, and executes them against the database. 
   - Note: you will lose all newly created (test) data each time this is run, since the schema files will tend to `DROP` the tables and recreate them.
+- **The passwords are NOT encrypted.**
 
 ## Dependencies
 
@@ -46,3 +51,11 @@ The following steps are only for _one_ of the group members to perform.
 - Bootstrap ( npm i bootstrap@5.3.2 )
 - JQUERY
 - JQUERY UI
+
+## Screenshots
+
+![main screen](docs/passwordkeepr_screen01.png)
+
+![create new password](docs/passwordkeepr_screen02.png)
+
+![login page](docs/passwordkeepr_screen00.png)
