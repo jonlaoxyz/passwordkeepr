@@ -21,24 +21,7 @@
   <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
   <script defer src="/scripts/app.js"></script>
   <script src="/scripts/copyToClipboard.js"></script>
-
-  <script>
-    $(document).ready(function(){
-      $("#newPassword").hide();
-      $("#newEntry").click(function(){
-        $("#sectionHeader").text("Create New Password");
-        $("#passwordForm").trigger("reset");
-        $("#newPassword").toggle();
-      });
-      $("#closeMe").click(function(){
-        $("#newPassword").toggle();
-      });
-    });
-
-
-
-  </script>
-
+  <script src="/scripts/helper.js"></script>
 
 </head>
 
@@ -188,7 +171,7 @@
 
       <!-- container for holding the passwords from the database -->
       <div class="ms-4">
-        <h1 class="mainList">Passwords List</h1>
+        <h1 class="mainList">Password List</h1>
       </div>
       <div id="password-list">
 
@@ -202,107 +185,14 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-<script>
-  function generate() {
-    // get references of all the inputs
-    const length = document.getElementById("passwordRange").value;
-    const useUppercase = document.getElementById("allCaps").checked;
-    const useLowercase = document.getElementById("lowerCase").checked;
-    const useNumbers = document.getElementById("numbers").checked;
-    const useSymbols = document.getElementById("symbols").checked;
-    const excludeDuplicates = document.getElementById("no-duplicates").checked;
 
-    // generate the random password
-    const password = generatePassword(parseInt(length), useUppercase, useLowercase, useNumbers, useSymbols, excludeDuplicates)
-
-    // show the password
-    document.getElementById('outputPassword').value = password
-  }
-
-
-
-  function generatePassword(length, useUppercase, useLowercase, useNumbers, useSymbols, excludeDuplicates) {
-  let charset = '';
-
-  if (useUppercase) {
-    charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  }
-
-  if (useLowercase) {
-    charset += 'abcdefghijklmnopqrstuvwxyz';
-  }
-
-  if (useNumbers) {
-    charset += '0123456789';
-  }
-
-  if (useSymbols) {
-    charset += '!@#$%^&*()-_+=<>?';
-  }
-
-  let password = [];
-  let usedChars = [];
-
-  if (excludeDuplicates && length > charset.length) {
-    console.error('Password length exceeds the available character set. Unable to generate a unique password.');
-    return '';
-  }
-
-  for (let i = 0; i < length; i++) {
-    let randomChar = charset.charAt(Math.floor(Math.random() * charset.length));
-
-    if (excludeDuplicates) {
-      while (usedChars.includes(randomChar)) {
-        randomChar = charset.charAt(Math.floor(Math.random() * charset.length));
-      }
-      usedChars.push(randomChar);
-    }
-
-    password.push(randomChar);
-  }
-
-  return password.join('');
-
-}
-</script>
 
 <!-- SMOOTH SCROLL -->
 <a href="" class="scrollup float-right">
   <i class="bi bi-arrow-up-square"></i>
 </a>
 
-<script>
-  $(window).scroll(function() {
-  if ($(this).scrollTop() > 600) {
-    $(".scrollup").fadeIn();
-  } else {
-    $(".scrollup").fadeOut();
-  }
-  })
-  $(".scrollup").click(function() {
-    $("html, body").animate({
-      scrollTop: 0
-    }, 600);
-    return false;
-  })
-</script>
 
-<script>
-    /* JQuery UI Sortable */
-
-    $(function () {
-      $("#password-list").sortable();
-      $("#password-list").sortable({
-        forceHelperSize: true
-      });
-      // Getter
-      var forceHelperSize = $( "#password-list" ).sortable( "option", "forceHelperSize" );
-
-      // Setter
-      $( "#password-list" ).sortable( "option", "forceHelperSize", true );
-    });
-
-</script>
 
 </body>
 
