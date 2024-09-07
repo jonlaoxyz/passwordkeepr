@@ -7,10 +7,6 @@ PasswordkeepR is an organizational password management application designed to s
 ## Description
 This tool enhances operational efficiency by reducing downtime and the dependency on single individuals for critical credentials. PasswordkeepR was developed as part of the LHL MidTerm Team Project submission in December 2023.
 
-## LHL MidTerm Team Project submission (December 2023)
-- Tejasva Bhatia
-- Jonathan Lao
-
 
 ## Screenshots
 
