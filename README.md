@@ -2,11 +2,12 @@ PasswordkeepR
 =========
 
 ## Project Overview
-PasswordkeepR is an organizational password management application designed to securely store and manage passwords for various departments within a company. It ensures that critical business operations can proceed smoothly, even when the primary password holder is unavailable, by allowing authorized employees to access the necessary credentials.
+PasswordkeepR is an organizational password management application designed to securely store and manage passwords for various departments within a company. It ensures that critical business operations can proceed smoothly, even when the primary password holder is unavailable, by allowing authorized employees to access the necessary credentials. This tool enhances operational efficiency by reducing downtime and the dependency on single individuals for critical credentials. PasswordkeepR was developed as part of the LHL MidTerm Team Project submission in December 2023.
 
-## Description
-This tool enhances operational efficiency by reducing downtime and the dependency on single individuals for critical credentials. PasswordkeepR was developed as part of the LHL MidTerm Team Project submission in December 2023.
+## Technologies Used
 
+- **Front-end:** HTML, CSS, JavaScript, Bootstrap
+- **Back-end:** Node.js, Express.js, PostgreSQL, AJAX
 
 ## Screenshots
 
